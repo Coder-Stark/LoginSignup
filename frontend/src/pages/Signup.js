@@ -8,12 +8,12 @@ function Signup() {
 
   const handleChange = (e)=>{
     const {name, value} = e.target;
-    console.log(name, value);
+    // console.log(name, value);
     const copysignupInfo = {...signupInfo};
     copysignupInfo[name] = value;
     setsignupInfo(copysignupInfo);
   }
-  console.log('signupInfo : ', signupInfo)
+  // console.log('signupInfo : ', signupInfo)
 
   const handleSignup = async (e)=>{
     e.preventDefault();
@@ -22,7 +22,10 @@ function Signup() {
       return handleError('name, email and Password required');
     }
     try{
-      const url = 'http://localhost:8080/auth/signup';
+      // const url = 'http://localhost:8080/auth/signup';
+      const BASE_URL = "https://loginsignupbackend-dz69.onrender.com";
+      const url = `${BASE_URL}/auth/signup`;
+
       const res = await fetch(url, {
         method: 'POST',
         headers:{
@@ -44,7 +47,7 @@ function Signup() {
       }else if(!success){
         handleError(message);
       }
-      console.log(result);
+      // console.log(result);
     }catch(err){
       handleError(err);
     }
